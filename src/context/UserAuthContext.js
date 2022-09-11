@@ -22,7 +22,13 @@ export function UserAuthContextProvider({children}) {
     
     // login Fx
     function login(email, password){
+        console.log("Email", email);
         return signInWithEmailAndPassword(auth, email, password);
+    }
+
+    //Logout Fx
+    function logout() {
+        return signOut(auth);
     }
 
     // Set current user
@@ -36,7 +42,7 @@ export function UserAuthContextProvider({children}) {
     }, [])
 
     return (
-        <userAuthContext.Provider value={{ user, signup, login }}>
+        <userAuthContext.Provider value={{ user, signup, login, logout }}>
             {children}
         </userAuthContext.Provider>
     )
