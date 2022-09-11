@@ -6,7 +6,6 @@ import GoogleButton from "react-google-button";
 
 
 const Login = () => {
-  
     return (
         <>
             <div className="p-4 box">
@@ -33,12 +32,12 @@ const Login = () => {
                     </div>
                 </Form>
                 <hr />
-            <div>
-                <GoogleButton
-                className="g-btn"
-                type="dark"
-                />
-            </div>
+                <div>
+                    <GoogleButton
+                    className="g-btn"
+                    type="dark"
+                    />
+                </div>
             </div>
             <div className="p-4 box mt-3 text-center">
                 Don't have an account? <Link to="/signup">Sign up</Link>

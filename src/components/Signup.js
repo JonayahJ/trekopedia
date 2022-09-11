@@ -4,12 +4,10 @@ import { Form } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 
 const Signup = () => {
- 
-
   return (
     <>
       <div className="p-4 box">
-        <h2 className="mb-3">Firebase Auth Signup</h2>
+        <h2 className="mb-3">Trekopedia Signup</h2>
         <Form>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Control

@@ -1,20 +1,22 @@
 import './App.css';
 import React from "react";
+import { Routes, Route } from 'react-router-dom';
+import { Col, Container, Row } from 'react-bootstrap';
+import Login from './components/Login';
+import Signup from './components/Signup';
 
 function App() {
-  // State goes here
-
   return (
-    <div className="App">
-      <header>
-        <h1>Hello Trekkies!</h1>
-      </header>
-      <div>
-        <h2>Welcome to Trekopedia</h2>
-        <button>Register</button>
-        <button>Login</button>
-      </div>
-    </div>
+    <Container>
+      <Row>
+        <Col>
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+          </Routes>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
