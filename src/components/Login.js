@@ -1,20 +1,45 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Form } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import GoogleButton from "react-google-button";
+import { useUserAuth } from "../context/UserAuthContext";
 
 
 const Login = () => {
+
+    // Form states
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+
+    // Auth fx
+    const { login } = useUserAuth();
+
+    // Bring user back to home after signing up
+    const navigate = useNavigate();
+
+    // Handle submit (async)
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try{
+            await login(email, password)
+            navigate("/home") // navigate the user back to home after successful signup
+        }catch(err){
+            setError(err.message);
+        }
+    }
+
     return (
         <>
             <div className="p-4 box">
                 <h2 className="mb-3">Login to Trekopedia</h2>
-                <Form>
+                <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Control
                             type="email"
                             placeholder="Email address"
+                            onChange={ (e) => setEmail(e.target.value)}
                         />
                     </Form.Group>
 
@@ -22,6 +47,7 @@ const Login = () => {
                         <Form.Control
                             type="password"
                             placeholder="Password"
+                            onChange={ (e) => setPassword(e.target.value)}
                         />
                     </Form.Group>
 
