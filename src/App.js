@@ -6,7 +6,14 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Hello Trekkies!</h1>
+      <header>
+        <h1>Hello Trekkies!</h1>
+      </header>
+      <div>
+        <h2>Welcome to Trekopedia</h2>
+        <button>Register</button>
+        <button>Login</button>
+      </div>
     </div>
   );
 }
