@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Form } from "react-bootstrap";
+import { Form , Alert} from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import GoogleButton from "react-google-button";
 import { useUserAuth } from "../context/UserAuthContext";
@@ -34,6 +34,7 @@ const Login = () => {
         <>
             <div className="p-4 box">
                 <h2 className="mb-3">Login to Trekopedia</h2>
+                {error && <Alert variant="danger">{error}</Alert>}
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Control
