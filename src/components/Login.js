@@ -14,7 +14,7 @@ const Login = () => {
     const [error, setError] = useState("");
 
     // Auth fx
-    const { login } = useUserAuth();
+    const { login, googleSignIn } = useUserAuth();
 
     // Bring user back to home after signing up
     const navigate = useNavigate();
@@ -27,6 +27,18 @@ const Login = () => {
             navigate("/home") // navigate the user back to home after successful signup
         }catch(err){
             setError(err.message);
+        }
+    }
+
+    // Handle Google Auth
+    const handleGoogleSignIn = async (e) => {
+        e.preventDefault();
+
+        try {
+            await googleSignIn();
+            navigate("/home")
+        } catch (err) {
+            setError(err.message)
         }
     }
 
@@ -61,8 +73,9 @@ const Login = () => {
                 <hr />
                 <div>
                     <GoogleButton
-                    className="g-btn"
-                    type="dark"
+                        className="g-btn"
+                        type="dark"
+                        onClick={handleGoogleSignIn}
                     />
                 </div>
             </div>
